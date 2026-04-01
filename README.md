@@ -1,4 +1,4 @@
-# 🪟 band4-overlay
+# 🪟 band 4 overlay creation
 
 A C++ library that creates windows in high bands (band 4 / notification level) —
 staying on top of fullscreen games, Task Manager, and other system windows —
