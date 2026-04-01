@@ -1,56 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+# 🪟 band4-overlay
 
-<h1>🪟 band4-overlay</h1>
-
-<p>
 A C++ library that creates windows in high bands (band 4 / notification level) —
 staying on top of fullscreen games, Task Manager, and other system windows —
-with <strong>no certificate, no protected path, no manifest required</strong>.
-</p>
+with **no certificate, no protected path, no manifest required**.
 
-<h2>🎬 Demo</h2>
+## 🎬 Demo
 
 <p align="center">
   <img src="https://i.ibb.co/7x0ygN2H/2026-03-31-23-57-32-online-video-cutter-com.gif" alt="demo" />
 </p>
 
-<p align="center">
-  <i>As we can see, the window stays on top of Task Manager.</i>
-</p>
+<p align="center"><i>As we can see, the window stays on top of Task Manager.</i></p>
 
-<h2>🤔 The Problem</h2>
+## 🤔 The Problem
 
-<p>
 If you want to create a window in a high band (notifications, overlays, etc.)
 so it stays on top of fullscreen games, Task Manager, and other system windows,
-you would use the undocumented <code>CreateWindowInBand</code> function.
-</p>
+you would use the undocumented `CreateWindowInBand` function.
 
-<p>The problem is that to create windows in high bands, Microsoft requires:</p>
-<ul>
-  <li>✅ A valid certificate/signature on your executable</li>
-  <li>✅ Your program to be located in a protected path like <code>Program Files</code> or <code>System32</code></li>
-  <li>✅ A manifest with <code>uiAccess=true</code></li>
-</ul>
+The problem is that to create windows in high bands, Microsoft requires:
+- A valid certificate/signature on your executable
+- Your program to be located in a protected path like `Program Files` or `System32`
+- A manifest with `uiAccess=true`
 
-<p>
 And even then, your signature can be revoked depending on the purpose of your program.
-</p>
 
-<h2>💡 The Solution</h2>
+## 💡 The Solution
 
-<p>
-This library solves this by injecting shellcode into <code>explorer.exe</code>, which already
+This library solves this by injecting shellcode into `explorer.exe`, which already
 has the necessary permissions, and creates the window from within it — no certificate,
 no protected path, no manifest required.
-</p>
 
-<h2>🚀 Usage</h2>
-
-<pre><code>#include "overlay/overlay.hpp"
+## 🚀 Usage
+```cpp
+#include "overlay/overlay.hpp"
 
 int main(){
     overlay::init(true);  // true = debug output
@@ -59,22 +42,14 @@ int main(){
     
     overlay::exit(true);
 }
-</code></pre>
+```
 
-<blockquote>
-  <strong>⚠️ Warning:</strong> Must be run as Administrator.
-</blockquote>
+> ⚠️ **Warning:** Must be run as Administrator.
 
-<h2>⚙️ How It Works</h2>
+## ⚙️ How It Works
 
-<ol>
-  <li>🔍 Gets the <code>explorer.exe</code> PID via <code>GetShellWindow</code></li>
-  <li>💾 Allocates memory in <code>explorer.exe</code> with <code>VirtualAllocEx</code></li>
-  <li>✍️ Writes the shellcode payload and a configuration struct into the allocated memory</li>
-  <li>🧵 Spawns a remote thread in <code>explorer.exe</code> via <code>CreateRemoteThread</code></li>
-  <li>🪟 The thread calls <code>CreateWindowInBand</code> from within <code>explorer.exe</code>'s context,
-  bypassing all signature and permission requirements</li>
-</ol>
-
-</body>
-</html>
+1. 🔍 Gets the `explorer.exe` PID via `GetShellWindow`
+2. 💾 Allocates memory in `explorer.exe` with `VirtualAllocEx`
+3. ✍️ Writes the shellcode payload and a configuration struct into the allocated memory
+4. 🧵 Spawns a remote thread in `explorer.exe` via `CreateRemoteThread`
+5. 🪟 The thread calls `CreateWindowInBand` from within `explorer.exe`'s context, bypassing all signature and permission requirements
