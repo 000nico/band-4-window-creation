@@ -7,7 +7,7 @@ with **no certificate, no protected path, no manifest required**.
 ## 🎬 Demo
 
 <p align="center">
-  <img src="https://private-user-images.githubusercontent.com/158855379/572260839-3d4372bd-460e-46fa-b875-0b054eeeb754.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUwNjAzMDYsIm5iZiI6MTc3NTA2MDAwNiwicGF0aCI6Ii8xNTg4NTUzNzkvNTcyMjYwODM5LTNkNDM3MmJkLTQ2MGUtNDZmYS1iODc1LTBiMDU0ZWVlYjc1NC5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwMVQxNjEzMjZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kNjNkZmI4YTA0Y2E2OTNjMWZjYjhiZDI4OWRiNmYzNjZkMmEwMmQ5MWMyMjc3ZDAwNDAwNDY4ZjQ3MGZhMWU2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.lqupWdaRGFbt3i1V92WGYjgLvylUHK9VXR89baNXIjY" alt="demo" />
+  <img src="https://i.imgur.com/LWx7mnH.gif" alt="demo" />
 </p>
 
 <p align="center"><i>As we can see, the window stays on top of Task Manager.</i></p>
