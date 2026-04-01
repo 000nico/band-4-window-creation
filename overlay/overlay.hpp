@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Nicolas Carlino
 #include <windows.h>
 
 namespace overlay {
