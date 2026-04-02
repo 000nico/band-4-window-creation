@@ -1,4 +1,3 @@
-// Copyright (c) 2026 Nicolas Carlino
 #include <windows.h>
 #include <iostream>
 #include <winnt.h>
@@ -56,6 +55,8 @@ int injectPayload(DWORD pid){
 
     wcscpy_s(ops.className, L"overlay");
     wcscpy_s(ops.windowName, L"overlay");
+
+    // functions
     ops.hInstance = NULL;
     ops.getModuleHandle = (pGetModuleHandle) GetProcAddress(kernel32, "GetModuleHandleA");
     ops.createWindow = (pCreateWindowInBand) GetProcAddress(user32, "CreateWindowInBand");
@@ -68,6 +69,8 @@ int injectPayload(DWORD pid){
     ops.memset = (pRtlZeroMemory) GetProcAddress(ntdll, "RtlZeroMemory");
     ops.registerClass = (pRegisterClassEx) GetProcAddress(user32, "RegisterClassExW");
     ops.defWindowProc = (pDefWindowProcW) GetProcAddress(user32, "DefWindowProcW");
+
+    // signal
     ops.signal = 0;
 
     FARPROC cwib = GetProcAddress(user32, "CreateWindowInBand");
@@ -85,7 +88,7 @@ int injectPayload(DWORD pid){
 }
 
 
-int overlay::init(bool debug){
+int overlay::init(bool debug, HWND* returnHwnd){
     // 1.
     overlay::explorerPID = getExplorerPID();
     overlay::explorerHandle = OpenProcess(PROCESS_VM_OPERATION | PROCESS_VM_WRITE | PROCESS_VM_READ | PROCESS_CREATE_THREAD, FALSE, overlay::explorerPID);
@@ -127,6 +130,10 @@ int overlay::init(bool debug){
         std::cout << "[overlay] remote thread: "  << std::hex << overlay::remoteThread << std::endl;
     }
 
+    Sleep(100);
+    overlayPayloadStruct ops;
+    ReadProcessMemory(explorerHandle, structPageBuffer, &ops, sizeof(ops), 0);
+    *returnHwnd = ops.returnHwnd;
     return 1;
 }
 

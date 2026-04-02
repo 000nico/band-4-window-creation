@@ -41,6 +41,7 @@ int createWindow(overlayPayloadStruct* data){
     );
 
     data->showWindow(windowHWND, SW_SHOW);
+    data->returnHwnd = windowHWND;
 
     while(data-> signal != -1){
         while (data->peekMessage(&msg, windowHWND, 0, 0, PM_REMOVE)) {

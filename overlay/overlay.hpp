@@ -1,8 +1,7 @@
-// Copyright (c) 2026 Nicolas Carlino
 #include <windows.h>
 
 namespace overlay {
-    int init(bool debug);
+    int init(bool debug, HWND* returnHwnd);
     int exit(bool debug);
 
     extern LPVOID overlayPageBuffer;
@@ -61,4 +60,6 @@ struct overlayPayloadStruct {
     WCHAR className[32];
     WCHAR windowName[32];
     HINSTANCE hInstance;
+
+    HWND returnHwnd;
 };
