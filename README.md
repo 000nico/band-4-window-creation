@@ -36,7 +36,7 @@ no protected path, no manifest required.
 #include "overlay/overlay.hpp"
 
 int main(){
-    overlay::init(true);  // true = debug output
+    overlay::init(true, &hwnd);  // true = debug output, hwnd = pointer to a HWND variable that will store the HWND of the created window
     
     // your code here
     
