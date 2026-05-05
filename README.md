@@ -1,4 +1,4 @@
-# 🪟 band 4 overlay creation
+# band 4 overlay creation
 
 A C++ library that creates windows in high bands (band 4 / notification level) —
 staying on top of fullscreen games, Task Manager, and other system windows —
@@ -12,7 +12,7 @@ with **no certificate, no protected path, no manifest required**.
 
 <p align="center"><i>As we can see, the window stays on top of Task Manager.</i></p>
 
-## 🤔 The Problem
+## The Problem
 
 If you want to create a window in a high band (notifications, overlays, etc.)
 so it stays on top of fullscreen games, Task Manager, and other system windows,
@@ -25,7 +25,7 @@ The problem is that to create windows in high bands, Microsoft requires:
 
 And even then, your signature can be revoked depending on the purpose of your program.
 
-## 💡 The Solution
+## The Solution
 
 This library solves this by injecting shellcode into `explorer.exe`, which already
 has the necessary permissions, and creates the window from within it — no certificate,
@@ -44,9 +44,7 @@ int main(){
 }
 ```
 
-> ⚠️ **Warning:** Must be run as Administrator.
-
-## ⚙️ How It Works
+## How It Works
 
 1. Gets the `explorer.exe` PID via `GetShellWindow`
 2. Allocates memory in `explorer.exe` with `VirtualAllocEx`
